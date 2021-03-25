@@ -1,7 +1,7 @@
 package com.example.assisnment_mvvm_and_coroutines.viewModel
 
 import androidx.lifecycle.ViewModel
-import com.example.assisnment_mvvm_and_coroutines.models.NewsData
+import com.example.assisnment_mvvm_and_coroutines.Album
 import com.example.assisnment_mvvm_and_coroutines.repository.MyRepository
 import retrofit2.Response
 
@@ -11,10 +11,10 @@ class MainViewModel : ViewModel() {
         myRepository = MyRepository.instance
     }
 
-    suspend fun getHeadlines(country: String?): Response<NewsData?>? {
+    suspend fun getAlbums(): Response<List<Album>>? {
         if (myRepository == null) {
             myRepository = MyRepository.instance
         }
-        return myRepository!!.getNews(country)
+        return myRepository!!.getAlbum()
     }
 }

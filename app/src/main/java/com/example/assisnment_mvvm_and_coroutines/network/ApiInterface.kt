@@ -1,14 +1,19 @@
 package com.example.assisnment_mvvm_and_coroutines.network
 
-import com.example.assisnment_mvvm_and_coroutines.models.NewsData
+import android.provider.MediaStore
+import com.example.assisnment_mvvm_and_coroutines.Album
+import com.example.assisnment_mvvm_and_coroutines.models.Photo
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiInterface {
-    @GET("top-headlines")
-    suspend fun getHeadlines(
-        @Query("country") country: String?,
-        @Query("apiKey") apiKey: String?
-    ): Response<NewsData?>?
+    @GET("albums")
+    suspend fun getAlbums(
+    ): Response<List<Album>>?
+
+    @GET("photos")
+    suspend fun getPhotos(
+        @Query("albumId") albumid: String
+    ): Response<List<Photo>>?
 }

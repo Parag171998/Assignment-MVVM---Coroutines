@@ -4,22 +4,22 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class NewsApiClient private constructor() {
+class ApiClient private constructor() {
     val api: ApiInterface
         get() = retrofit.create(ApiInterface::class.java)
 
     companion object {
-        private const val NEWS_BASE_URL = "https://newsapi.org/v2/"
-        private var newsApiClient: NewsApiClient? = null
+        private const val NEWS_BASE_URL = "https://jsonplaceholder.typicode.com/"
+        private var apiClient: ApiClient? = null
         private lateinit var retrofit: Retrofit
 
         @get:Synchronized
-        val instance: NewsApiClient?
+        val instance: ApiClient?
             get() {
-                if (newsApiClient == null) {
-                    newsApiClient = NewsApiClient()
+                if (apiClient == null) {
+                    apiClient = ApiClient()
                 }
-                return newsApiClient
+                return apiClient
             }
     }
 

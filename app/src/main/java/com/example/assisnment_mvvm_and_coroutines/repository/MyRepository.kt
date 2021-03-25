@@ -1,14 +1,13 @@
 package com.example.assisnment_mvvm_and_coroutines.repository
 
-import com.example.assisnment_mvvm_and_coroutines.models.NewsData
-import com.example.assisnment_mvvm_and_coroutines.network.NewsApiClient
+import com.example.assisnment_mvvm_and_coroutines.Album
+import com.example.assisnment_mvvm_and_coroutines.network.ApiClient
 import retrofit2.Response
 
 class MyRepository {
-    private val NEWS_API_KEY = "6d0df12f66ef4483bad3908f781308b1"
 
-     suspend fun getNews(country: String?): Response<NewsData?>? {
-        return NewsApiClient.instance?.api?.getHeadlines(country, NEWS_API_KEY)
+     suspend fun getAlbum(): Response<List<Album>>? {
+        return ApiClient.instance?.api?.getAlbums()
     }
 
     companion object {
