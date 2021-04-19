@@ -1,21 +1,11 @@
 package com.example.assisnment_mvvm_and_coroutines.repository
 
 import com.example.assisnment_mvvm_and_coroutines.Album
-import com.example.assisnment_mvvm_and_coroutines.network.ApiClient
+import com.example.assisnment_mvvm_and_coroutines.models.Photo
 import retrofit2.Response
 
-class MyRepository {
+interface MyRepository {
+    suspend fun getAlbum(): Response<List<Album>>?
 
-     suspend fun getAlbum(): Response<List<Album>>? {
-        return ApiClient.instance?.api?.getAlbums()
-    }
-
-    companion object {
-        private var myRepositoryInstance: MyRepository? = null
-        val instance: MyRepository?
-            get() {
-                if (myRepositoryInstance == null) myRepositoryInstance = MyRepository()
-                return myRepositoryInstance
-            }
-    }
+    suspend fun getPhotos(id : String): Response<List<Photo>>?
 }

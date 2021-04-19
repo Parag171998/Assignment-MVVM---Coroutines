@@ -9,7 +9,7 @@ class ApiClient private constructor() {
         get() = retrofit.create(ApiInterface::class.java)
 
     companion object {
-        private const val NEWS_BASE_URL = "https://jsonplaceholder.typicode.com/"
+        const val NEWS_BASE_URL = "https://jsonplaceholder.typicode.com/"
         private var apiClient: ApiClient? = null
         private lateinit var retrofit: Retrofit
 

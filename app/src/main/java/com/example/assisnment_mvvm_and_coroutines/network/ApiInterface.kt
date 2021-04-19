@@ -12,6 +12,10 @@ interface ApiInterface {
     suspend fun getAlbums(
     ): Response<List<Album>>?
 
+    @GET("albums_v2")
+    suspend fun getAlbums_v2(
+    ): Response<List<Album>>?
+
     @GET("photos")
     suspend fun getPhotos(
         @Query("albumId") albumid: String

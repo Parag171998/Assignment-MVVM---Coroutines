@@ -1,23 +1,23 @@
 package com.example.assisnment_mvvm_and_coroutines
 
-import com.example.assisnment_mvvm_and_coroutines.repository.MyRepository
+import com.example.assisnment_mvvm_and_coroutines.repository.MyRepositoryImpl
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
 class ResponseTestCase {
 
-    private lateinit var myRepository: MyRepository
+    private lateinit var myRepositoryImpl: MyRepositoryImpl
 
     @Before
     fun setup(){
-        myRepository = MyRepository()
+        myRepositoryImpl = MyRepositoryImpl()
     }
 
     @Test
     fun response_isNotNull() {
         runBlocking {
-            val result = myRepository.getNews("us")
+            val result = myRepositoryImpl.getNews("us")
             assert(result?.isSuccessful == true)
         }
     }

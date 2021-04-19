@@ -1,4 +1,4 @@
-package com.example.assisnment_mvvm_and_coroutines
+package com.example.assisnment_mvvm_and_coroutines.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,14 +7,21 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.assisnment_mvvm_and_coroutines.Adapter.PhotosAdapter
+import com.example.assisnment_mvvm_and_coroutines.Album
+import com.example.assisnment_mvvm_and_coroutines.R
 import com.example.assisnment_mvvm_and_coroutines.models.Photo
 import com.example.assisnment_mvvm_and_coroutines.network.ApiClient
+import com.example.assisnment_mvvm_and_coroutines.viewModel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_dynamic.*
 import kotlinx.android.synthetic.main.fragment_dynamic.view.*
 import kotlinx.coroutines.*
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class DynamicFragment(private val album: Album) : Fragment() {
+
+    private val mainViewModel: MainViewModel by sharedViewModel()
     private val coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.Main)
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,6 +42,6 @@ class DynamicFragment(private val album: Album) : Fragment() {
     }
 
     private suspend fun getPhotoList(): List<Photo>? = withContext(Dispatchers.IO){
-        ApiClient.instance?.api?.getPhotos(album.id.toString())?.body()
+        mainViewModel.getPhotos(album.id.toString())?.body()
     }
 }

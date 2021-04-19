@@ -1,10 +1,10 @@
-package com.example.assisnment_mvvm_and_coroutines
+package com.example.assisnment_mvvm_and_coroutines.activities
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProviders
 import com.example.assisnment_mvvm_and_coroutines.Adapter.TabAdapter
+import com.example.assisnment_mvvm_and_coroutines.Album
+import com.example.assisnment_mvvm_and_coroutines.R
 import com.example.assisnment_mvvm_and_coroutines.viewModel.MainViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
@@ -14,12 +14,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MainActivity : AppCompatActivity() {
 
     private var albumList: List<Album>? = null
-    private var mainViewModel: MainViewModel? = null
+    private val mainViewModel: MainViewModel by viewModel()
     private val coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.Main)
     private var adapter: TabAdapter? = null
 
@@ -27,8 +28,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initViewModel()
+        initTableLayoutListener()
+    }
 
-        tabLayout.setOnTabSelectedListener(object : OnTabSelectedListener {
+    private fun initTableLayoutListener() {
+        tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 viewPager.currentItem = tab.position
             }
@@ -39,8 +43,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        mainViewModel?.init()
+//        mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+//        mainViewModel?.init()
 
         coroutineScope.launch {
             albumList = getArticleList()
@@ -60,6 +64,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private suspend fun getArticleList(): List<Album>? = withContext(Dispatchers.IO){
-        mainViewModel?.getAlbums()?.body()
+        mainViewModel.getAlbums()?.body()
     }
 }
