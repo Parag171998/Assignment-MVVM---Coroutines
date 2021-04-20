@@ -9,7 +9,7 @@ import com.example.assisnment_mvvm_and_coroutines.repository.MyRepositoryImpl
 import com.example.assisnment_mvvm_and_coroutines.room.MyAppDatabase
 import retrofit2.Response
 
-class MainViewModel(private val repository: MyRepository) : ViewModel() {
+class MainViewModel constructor(private val repository: MyRepositoryImpl) : ViewModel() {
     suspend fun getAlbums(): Response<List<Album>>? {
         return repository.getAlbum()
     }

@@ -8,11 +8,13 @@ import com.google.gson.annotations.SerializedName
 @Entity
 class Album {
 
+    @PrimaryKey(autoGenerate = true)
+    var uid: Int? = null
+
     @SerializedName("userId")
     @Expose
     var userId: Int? = null
 
-    @PrimaryKey
     @SerializedName("id")
     @Expose
     var id: Int? = null

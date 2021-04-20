@@ -15,11 +15,9 @@ class MyApplication: Application() {
 
         startKoin {
             androidContext(this@MyApplication)
-            module {
-                listOf(appModule,
+            modules(listOf(appModule,
                     viewModule,
-                repositoryModule)
-            }
+                    repositoryModule))
         }
     }
 }

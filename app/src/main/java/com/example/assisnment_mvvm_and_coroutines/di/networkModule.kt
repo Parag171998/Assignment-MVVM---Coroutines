@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.room.Room
 import com.example.assisnment_mvvm_and_coroutines.network.ApiClient
 import com.example.assisnment_mvvm_and_coroutines.network.ApiInterface
-import com.example.assisnment_mvvm_and_coroutines.network.RemoteDataSource
+import com.example.assisnment_mvvm_and_coroutines.network.RemoteDataSourceImp
 import com.example.assisnment_mvvm_and_coroutines.repository.MyRepositoryImpl
-import com.example.assisnment_mvvm_and_coroutines.room.LocalDataSource
+import com.example.assisnment_mvvm_and_coroutines.room.LocalDataSourceImp
 import com.example.assisnment_mvvm_and_coroutines.room.MyAppDatabase
 import com.example.assisnment_mvvm_and_coroutines.viewModel.MainViewModel
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -18,18 +18,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val appModule = module{
     single { provideRetrofit() }
-    single { provideApiInterface(get()) }
+    single { provideApiInterface(get() as Retrofit) }
     single { provideDatabase(androidApplication()) }
-    single { RemoteDataSource(get()) }
-    single { LocalDataSource(get()) }
+    single { RemoteDataSourceImp(get() as ApiInterface) }
+    single { LocalDataSourceImp(get() as MyAppDatabase) }
 }
 
 val viewModule = module {
-    viewModel { MainViewModel(get()) }
+    viewModel { MainViewModel(get() as MyRepositoryImpl) }
 }
 
 val repositoryModule = module {
-    single { MyRepositoryImpl(get(), get()) }
+    single { MyRepositoryImpl(get() as RemoteDataSourceImp, get() as LocalDataSourceImp) }
 }
 
 private fun provideRetrofit(): Retrofit {
