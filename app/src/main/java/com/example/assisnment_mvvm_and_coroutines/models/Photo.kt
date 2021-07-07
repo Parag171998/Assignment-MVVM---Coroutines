@@ -1,29 +1,26 @@
 package com.example.assisnment_mvvm_and_coroutines.models
 
 import com.google.gson.annotations.Expose
-
 import com.google.gson.annotations.SerializedName
 
-
 class Photo {
-    @SerializedName("albumId")
+    @SerializedName("page")
     @Expose
-    var albumId: Int? = null
+    var page: Int? = null
 
-    @SerializedName("id")
+    @SerializedName("pages")
     @Expose
-    var id: Int? = null
+    var pages: Int? = null
 
-    @SerializedName("title")
+    @SerializedName("perpage")
     @Expose
-    var title: String? = null
+    var perpage: Int? = null
 
-    @SerializedName("url")
+    @SerializedName("total")
     @Expose
-    var url: String? = null
+    var total: Int? = null
 
-    @SerializedName("thumbnailUrl")
+    @SerializedName("photo")
     @Expose
-    var thumbnailUrl: String? = null
-
+    var photo: List<Photos>? = null
 }

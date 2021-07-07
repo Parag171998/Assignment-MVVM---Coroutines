@@ -24,3 +24,15 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext{
+    // Testing
+    junitVersion = '4.12'
+    junitTestVersion = '1.1.1'
+    expressoCoreVersion = '3.2.0'
+    mockito2Version = '2.15.0'
+    powerMockito2Version = '1.6.2'
+    powerMockito = '1.6.2'
+    runnerVersion = '0.5'
+    mockitoInlineVersion = '2.8.47'
+}

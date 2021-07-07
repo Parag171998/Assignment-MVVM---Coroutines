@@ -1,23 +1,11 @@
 package com.example.assisnment_mvvm_and_coroutines.network
 
-import android.provider.MediaStore
-import com.example.assisnment_mvvm_and_coroutines.Album
-import com.example.assisnment_mvvm_and_coroutines.models.Photo
+import com.example.assisnment_mvvm_and_coroutines.models.Album
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Query
 
 interface ApiInterface {
-    @GET("albums")
-    suspend fun getAlbums(
-    ): Response<List<Album>>?
-
-    @GET("albums_v2")
-    suspend fun getAlbums_v2(
-    ): Response<List<Album>>?
-
-    @GET("photos")
+    @GET("rest?method=flickr.photos.search&api_key=641c87bd78e54920b01e9a5d8bb726d7&format=json&nojsoncallback=1&extras=url_q&text=polo&page=2")
     suspend fun getPhotos(
-        @Query("albumId") albumid: String
-    ): Response<List<Photo>>?
+    ): Response<Album>?
 }
