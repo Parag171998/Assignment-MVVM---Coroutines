@@ -2,36 +2,21 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/size_200dp"
-    android:layout_margin="@dimen/margin_10dp"
+    android:layout_height="@dimen/size_300dp"
     app:cardCornerRadius="@dimen/radius_10dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="@dimen/padding_10dp">
-
         <ImageView
             android:id="@+id/img"
-            android:layout_width="@dimen/size_150dp"
-            android:layout_height="@dimen/size_150dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:contentDescription="@null"
             android:scaleType="fitXY"
+            android:padding="10dp"
             android:src="@mipmap/ic_launcher" />
 
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/margin_30dp"
-            android:freezesText="false"
-            android:textColor="@color/black" />
-    </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -3,6 +3,7 @@
     package="com.example.assisnment_mvvm_and_coroutines">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -11,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AssisnmentMVVMandCoroutines">
+        <activity android:name=".activities.FullScreenImage"></activity>
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

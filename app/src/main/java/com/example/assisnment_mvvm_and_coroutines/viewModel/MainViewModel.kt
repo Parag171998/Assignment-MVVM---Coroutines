@@ -6,5 +6,5 @@ import com.example.assisnment_mvvm_and_coroutines.repository.MyRepositoryImpl
 import retrofit2.Response
 
 class MainViewModel constructor(private val repository: MyRepositoryImpl) : ViewModel() {
-    suspend fun getPhotos(): Response<Album>? = repository.getPhotos()
+    suspend fun getPhotos(value: String): Response<Album>? = repository.getPhotos(value)
 }

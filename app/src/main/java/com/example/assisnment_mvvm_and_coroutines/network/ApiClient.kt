@@ -9,7 +9,7 @@ class ApiClient private constructor() {
         get() = retrofit.create(ApiInterface::class.java)
 
     companion object {
-        const val NEWS_BASE_URL = "https://api.flickr.com/services/"
+        const val NEWS_BASE_URL = "https://pixabay.com/"
         private var apiClient: ApiClient? = null
         private lateinit var retrofit: Retrofit
 

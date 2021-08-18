@@ -4,6 +4,6 @@ import com.example.assisnment_mvvm_and_coroutines.models.Album
 import retrofit2.Response
 
 class RemoteDataSourceImp(private val apiInterface: ApiInterface) : RemoteDataSource {
-    override suspend fun getPhotos(): Response<Album>? =
-        apiInterface.getPhotos()
+    override suspend fun getPhotos(value: String): Response<Album>? =
+        apiInterface.getPhotos(value)
 }

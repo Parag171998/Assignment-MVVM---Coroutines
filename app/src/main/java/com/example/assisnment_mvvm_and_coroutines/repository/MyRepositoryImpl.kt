@@ -6,7 +6,7 @@ import retrofit2.Response
 
 class MyRepositoryImpl(private val remoteDataSourceImp: RemoteDataSourceImp) : MyRepository {
 
-    override suspend fun getPhotos(): Response<Album>? {
-        return remoteDataSourceImp.getPhotos()
+    override suspend fun getPhotos(value: String): Response<Album>? {
+        return remoteDataSourceImp.getPhotos(value)
     }
 }
